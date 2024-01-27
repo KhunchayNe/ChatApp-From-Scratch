@@ -15,8 +15,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   String email = "", password = "", name = "", pic = "", username = "", id = "";
-  TextEditingController usermailcontroller = new TextEditingController();
-  TextEditingController userpasswordcontroller = new TextEditingController();
+  TextEditingController usermailcontroller = TextEditingController();
+  TextEditingController userpasswordcontroller = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
 
@@ -211,7 +211,7 @@ class _SignInState extends State<SignIn> {
                                   userLogin();
                                 },
                                 child: Center(
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 130,
                                     child: Material(
                                       elevation: 5.0,

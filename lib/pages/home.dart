@@ -1,7 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:messagingapp/pages/chatpage.dart';
 import 'package:messagingapp/service/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:messagingapp/service/shared_pref.dart';
 
 class Home extends StatefulWidget {
@@ -62,9 +62,9 @@ class _HomeState extends State<Home> {
 
   getChatRoomIdbyUsername(String a, String b) {
     if (a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
-      return "$b\_$a";
+      return "${b}_$a";
     } else {
-      return "$a\_$b";
+      return "${a}_$b";
     }
   }
 
@@ -91,13 +91,13 @@ class _HomeState extends State<Home> {
       });
     } else {
       tempSearchStore = [];
-      queryResultSet.forEach((element) {
+      for (var element in queryResultSet) {
         if (element['username'].startsWith(capitalizedValue)) {
           setState(() {
             tempSearchStore.add(element);
           });
         }
-      });
+      }
     }
   }
 
@@ -268,8 +268,8 @@ class _HomeState extends State<Home> {
 
 class ChatRoomListTile extends StatefulWidget {
   final String lastMessage, chatRoomId, myUsername, time;
-  ChatRoomListTile(
-      {required this.chatRoomId,
+  const ChatRoomListTile(
+      {super.key, required this.chatRoomId,
       required this.lastMessage,
       required this.myUsername,
       required this.time});
@@ -342,7 +342,7 @@ class _ChatRoomListTileState extends State<ChatRoomListTile> {
                       fontSize: 17.0,
                       fontWeight: FontWeight.w500),
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width/2,
                   child: Text(
                     widget.lastMessage,

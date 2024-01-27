@@ -5,6 +5,6 @@ class AuthMethods{
 
   getcurrentUser()async
   {
-return await auth.currentUser;
+return auth.currentUser;
   }
 }

@@ -13,7 +13,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   String email = "";
   final _formkey = GlobalKey<FormState>();
 
-  TextEditingController usermailcontroller = new TextEditingController();
+  TextEditingController usermailcontroller = TextEditingController();
 
   resetPassword() async {
     try {
@@ -137,7 +137,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                   }
                                 },
                                 child: Center(
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 130,
                                     child: Material(
                                       elevation: 5.0,

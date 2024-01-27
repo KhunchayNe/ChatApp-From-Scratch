@@ -15,15 +15,15 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   String email = "", password = "", name = "", confirmPassword = "";
 
-  TextEditingController mailcontroller = new TextEditingController();
-  TextEditingController passwordcontroller = new TextEditingController();
-  TextEditingController namecontroller = new TextEditingController();
-  TextEditingController confirmPasswordcontroller = new TextEditingController();
+  TextEditingController mailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController confirmPasswordcontroller = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
 
   registration() async {
-    if (password != null && password == confirmPassword) {
+    if (password == confirmPassword) {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
@@ -125,7 +125,7 @@ class _SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(10),
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 30.0, horizontal: 20.0),
+                              vertical: 15.0, horizontal: 20.0),
                           height: MediaQuery.of(context).size.height / 1.6,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(

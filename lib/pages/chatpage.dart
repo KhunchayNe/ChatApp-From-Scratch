@@ -9,14 +9,14 @@ import 'package:random_string/random_string.dart';
 class ChatPage extends StatefulWidget {
   String name, profileurl, username;
   ChatPage(
-      {required this.name, required this.profileurl, required this.username});
+      {super.key, required this.name, required this.profileurl, required this.username});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
 }
 
 class _ChatPageState extends State<ChatPage> {
-  TextEditingController messagecontroller = new TextEditingController();
+  TextEditingController messagecontroller = TextEditingController();
   String? myUserName, myProfilePic, myName, myEmail, messageId, chatRoomId;
   Stream? messageStream;
 
@@ -44,9 +44,9 @@ class _ChatPageState extends State<ChatPage> {
 
   getChatRoomIdbyUsername(String a, String b) {
     if (a.substring(0, 1).codeUnitAt(0) > b.substring(0, 1).codeUnitAt(0)) {
-      return "$b\_$a";
+      return "${b}_$a";
     } else {
-      return "$a\_$b";
+      return "${a}_$b";
     }
   }
 
